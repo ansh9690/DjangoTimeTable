@@ -1,0 +1,39 @@
+{% extends 'app/base.html' %}
+{%  load crispy_forms_tags %}
+{% block css %}
+.main{
+    margin-left:450px;
+    margin-top: 150px;
+}
+.card{
+    margin:30px;
+}
+{% endblock css %}
+{% block body %}
+<div class="container mt-5">
+    <div class="shadow-lg p-3 w-25 mb-5 bg-white main">
+        <div class="card border-0">
+            <form method="post" action="{% url 'accounts:login' %}">
+                {% csrf_token %}
+                <h3 class="text-info text-center mb-4">Sign in</h3>
+                {% for field in form %}
+                <div class="form-group">
+                    <label class="text-info">{{ field.label_tag }}</label><br>
+                    {{ field }}
+                </div>
+                {% endfor %}
+                <div class="mb-3 form-check mt-2">
+                    <label class="form-check-label" for="remember">Remember me</label>
+                    <input type="checkbox" class="form-check-input" id="remember">
+                </div>
+                <button type="submit" class="btn btn-success">Sign in</button>
+                <input type="hidden" name="next" value="{{ next }}">
+                <div class="text-right mt-3">
+                    <a href="{% url 'accounts:register' %}" class="text-info">Register here</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock body %}

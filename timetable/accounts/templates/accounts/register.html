@@ -1,0 +1,34 @@
+{% extends 'app/base.html' %}
+{%  load crispy_forms_tags %}
+{% block css %}
+.main{
+    margin-left:450px;
+    margin-top: 150px;
+}
+.card{
+    margin:30px;
+}
+{% endblock css %}
+{% block body %}
+<div class="container mt-5">
+    <div class="shadow-lg p-3 w-25 mb-5 bg-white main">
+        <div class="card border-0">
+            <form method="post" action="{% url 'accounts:register' %}">
+                {% csrf_token %}
+                <h3 class="text-info text-center mb-4">Sign up</h3>
+                {% for field in form %}
+                <div class="form-group">
+                    <label class="text-info">{{ field.label_tag }}</label><br>
+                    {{ field }}
+                </div>
+                    {% for error in field.errors %}
+                    <p style="color: red">{{ error }}</p>
+                    {% endfor %}
+                {% endfor %}
+                <br>
+                <button type="submit" class="btn btn-success btn-black">Sign up</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock body %}

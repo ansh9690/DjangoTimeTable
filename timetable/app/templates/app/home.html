@@ -1,0 +1,36 @@
+{% extends 'app/base.html' %}
+{% block body %}
+<div class="container mt-5">
+<H1 class="mb-4"><FONT COLOR="DARKCYAN"><CENTER>COLLEGE TIME TABLE</CENTER></FONT></H1>
+    <div class="table-responsive">
+        <table class="table text-center table-striped table-bordered border-secondary">
+            <tr>
+                <th >Time</th>
+                <th>MONDAY</th>
+                <th>TUESDAY</th>
+                <th>WEDNESDAY</th>
+                <th>THURSDAY</th>
+                <th>FRIDAY</th>
+                <th>SATURDAY</th>
+                <th>Sunday</th>
+            </tr>
+            {% for tb in tb %}
+            <tr>
+                <td>{{ tb.time }}</td>
+                <td>{{ tb.monday }}</td>
+                <td>{{ tb.tuesday }}</td>
+                <td>{{ tb.wednesday }}</td>
+                <td>{{ tb.thursday }}</td>
+                <td>{{ tb.friday }}</td>
+                <td>{{ tb.saturday }}</td>
+                <td>{{ tb.sunday }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <br>
+    <br>
+    <a class="btn btn-secondary" href="{% url 'app:update_tb' %}">Update Value</a>
+    <a class="btn btn-secondary" href="{% url 'app:add' %}">Add Row</a>
+</div>
+{% endblock body %}
