@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import TimeTable, TimeTableForm, UpdateTimeTableForm
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 
 def Home(request):
@@ -21,6 +22,7 @@ def Update(request, pk):
         form = UpdateTimeTableForm(request.POST, instance=update_tb)
         if form.is_valid():
             form.save()
+            messages.success(request, "Updated successfully.")
             return redirect('app:home')
     else:
         form = UpdateTimeTableForm()
@@ -36,6 +38,7 @@ def Add(request):
         form = TimeTableForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, "Row added successfully.")
             return redirect('/')
     else:
         form = TimeTableForm()

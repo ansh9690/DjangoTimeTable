@@ -11,7 +11,7 @@
 {% endblock css %}
 {% block body %}
 <div class="container mt-5">
-    <div class="shadow-lg p-3 w-25 mb-5 bg-white main">
+    <div class="shadow-lg p-3 w-25 mb-5 bg-white main border">
         <div class="card border-0">
             <form method="post" action="{% url 'accounts:register' %}">
                 {% csrf_token %}
@@ -26,7 +26,7 @@
                     {% endfor %}
                 {% endfor %}
                 <br>
-                <button type="submit" class="btn btn-success btn-black">Sign up</button>
+                <button type="submit" class="btn btn-secondary ">Sign up</button>
             </form>
         </div>
     </div>

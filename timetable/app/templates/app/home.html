@@ -1,6 +1,14 @@
 {% extends 'app/base.html' %}
 {% block body %}
 <div class="container mt-5">
+{% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+    {{ message }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+{% endfor %}
 <H1 class="mb-4"><FONT COLOR="DARKCYAN"><CENTER>COLLEGE TIME TABLE</CENTER></FONT></H1>
     <div class="table-responsive">
         <table class="table text-center table-striped table-bordered border-secondary">
@@ -16,14 +24,14 @@
             </tr>
             {% for tb in tb %}
             <tr>
-                <td>{{ tb.time }}</td>
-                <td>{{ tb.monday }}</td>
-                <td>{{ tb.tuesday }}</td>
-                <td>{{ tb.wednesday }}</td>
-                <td>{{ tb.thursday }}</td>
-                <td>{{ tb.friday }}</td>
-                <td>{{ tb.saturday }}</td>
-                <td>{{ tb.sunday }}</td>
+                <th>{{ tb.time }}</th>
+                <td style="color:red;">{{ tb.monday }}</td>
+                <td style="color:green;">{{ tb.tuesday }}</td>
+                <td style="color:blue;">{{ tb.wednesday }}</td>
+                <td style="color:#cf7515;">{{ tb.thursday }}</td>
+                <td style="color:#1c1c1b;">{{ tb.friday }}</td>
+                <td style="color:#cf15aa;">{{ tb.saturday }}</td>
+                <td style="color:#360f99;">{{ tb.sunday }}</td>
             </tr>
             {% endfor %}
         </table>

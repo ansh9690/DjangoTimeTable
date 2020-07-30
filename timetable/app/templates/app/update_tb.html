@@ -1,12 +1,30 @@
 {% extends 'app/base.html' %}
 {%  load crispy_forms_tags %}
+{% block css %}
+.main{
+    margin-left:450px;
+}
+.card{
+    margin:30px;
+}
+{% endblock css %}
 {% block body %}
-<div class="container mt-5">
-    <form action="." method="post">
-        {% csrf_token %}
-        {{ form | crispy }}
-        <br>
-        <button type="submit" class="btn btn-success">Update</button>
-    </form>
+<div class="container mt-4">
+    <div class="shadow-lg p-3 w-25 mb-5 bg-white main border">
+        <div class="card border-0">
+            <form action="." method="post">
+                {% csrf_token %}
+                <h3 class="text-info text-center mb-4">Update</h3>
+                {% for field in form %}
+                <div class="form-group">
+                    <label class="text-info">{{ field.label_tag }}</label><br>
+                    {{ field }}
+                </div>
+                {% endfor %}
+                <br>
+                <button type="submit" class="btn btn-secondary">Update Table</button>
+            </form>
+        </div>
+    </div>
 </div>
 {% endblock body %}
