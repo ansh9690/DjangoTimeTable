@@ -1,4 +1,5 @@
 {% extends 'app/base.html' %}
+{% block title %} Update{% endblock title %}
 {% block body %}
 <div class="container mt-5">
 <H1 class="mb-4"><FONT COLOR="DARKCYAN"><CENTER>COLLEGE TIME TABLE</CENTER></FONT></H1>
@@ -14,6 +15,7 @@
                 <th>SATURDAY</th>
                 <th>Sunday</th>
                 <th>Update</th>
+                <th>Delete</th>
             </tr>
             {% for tb in tb %}
             <tr>
@@ -26,6 +28,7 @@
                 <td style="color:#cf15aa;">{{ tb.saturday }}</td>
                 <td style="color:#360f99;">{{ tb.sunday }}</td>
                 <td><a class="btn btn-secondary" href="{% url 'app:update' tb.id %}">Edit</a></td>
+                <td><a class="btn btn-secondary" href="{% url 'app:delete_row' tb.id %}">Delete</a></td>
             </tr>
             {% endfor %}
         </table>

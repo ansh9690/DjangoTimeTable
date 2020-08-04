@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
 from .models import TimeTable, TimeTableForm, UpdateTimeTableForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -31,6 +31,12 @@ def Update(request, pk):
     }
     return render(request, 'app/update_tb.html', context)
 
+
+@login_required(login_url='accounts:login')
+def Delete_Row(request, pk):
+    delete = TimeTable.objects.get(pk=pk)
+    delete.delete()
+    return redirect("/")
 
 @login_required(login_url='accounts:login')
 def Add(request):
