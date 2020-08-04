@@ -1,0 +1,15 @@
+{% extends 'app/base.html' %}
+{% block title %} Confirmation {% endblock title %}
+{% block body %}
+
+<form action="." method="POST">
+	{% csrf_token %}
+	<div class="container mt-5 text-center">
+		<h1>Do you want to delete...? </h1>
+		<p><button type="submit" class="btn btn-success">Yes</button> 
+		<a href="{% url 'app:update_tb' %}" class="btn btn-danger mx-3">Cancel</a></p>
+	</div>
+		
+</form>
+
+{% endblock body %}

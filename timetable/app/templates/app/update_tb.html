@@ -1,5 +1,6 @@
 {% extends 'app/base.html' %}
 {%  load crispy_forms_tags %}
+{% block title %} Update Time Table{% endblock title %}
 {% block css %}
 .main{
     margin-left:450px;
@@ -23,6 +24,7 @@
                 {% endfor %}
                 <br>
                 <button type="submit" class="btn btn-secondary">Update Table</button>
+                <a href="{% url 'app:update_tb' %}" class="btn btn-danger ">Cancel</a></p>
             </form>
         </div>
     </div>

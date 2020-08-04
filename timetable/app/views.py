@@ -34,10 +34,12 @@ def Update(request, pk):
 
 @login_required(login_url='accounts:login')
 def Delete_Row(request, pk):
-    delete = TimeTable.objects.get(pk=pk)
-    delete.delete()
-    messages.success(request, "successfully deleted row")
-    return redirect("/")
+    row = get_object_or_404(TimeTable, pk=pk)
+    if request.method == "POST":
+        row.delete()
+        messages.success(request, "successfully deleted row")
+        return redirect("/")
+    return render(request, "app/confirm_delete.html")
 
 @login_required(login_url='accounts:login')
 def Add(request):
