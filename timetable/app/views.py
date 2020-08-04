@@ -36,6 +36,7 @@ def Update(request, pk):
 def Delete_Row(request, pk):
     delete = TimeTable.objects.get(pk=pk)
     delete.delete()
+    messages.success(request, "successfully deleted row")
     return redirect("/")
 
 @login_required(login_url='accounts:login')
